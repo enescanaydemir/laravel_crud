@@ -1,7 +1,7 @@
 @extends('layout')
 @section('content')
 <br>
-    @can('create', $book)
+    @can('create', App\Models\Book::class)
         <a href="{{route('library.create')}}" type='button' class="btn btn-success">Kitap Ekle</a>
     @endcan
         <table class="table">
