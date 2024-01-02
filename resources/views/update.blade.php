@@ -3,7 +3,7 @@
 
 
 
-<form action="{{route('library.update', $book->id)}}" method="POST"> <!-- get ile alınan istekler create, post ile alınan istekler ise store fonksiyonuna gidecek -->
+<form action="{{route('book.update', $book->id)}}" method="POST"> <!-- get ile alınan istekler create, post ile alınan istekler ise store fonksiyonuna gidecek -->
     @csrf <!--csrf form güvenliği için-->
     @method('PUT')
     <div class="mb-3">
@@ -14,10 +14,10 @@
         <label class="form-label">Yazar</label>
         <input type="text" class="form-control" name="author" value="{{$book->author}}">
     </div>
-    {{-- <div class="mb-3">
+    <div class="mb-3">
         <label class="form-label">Kitap Detayı</label>
         <input type="text" class="form-control" name="title">
-    </div> --}}
+    </div>
     <button type="submit" class="btn btn-warning">Güncelle</button>
 
 </form>

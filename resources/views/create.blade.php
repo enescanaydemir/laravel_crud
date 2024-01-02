@@ -1,7 +1,7 @@
 @extends('layout');
 @section('content')
     <div class="container">
-        <form action="{{route('library.store')}}" method="POST"> <!-- get ile alınan istekler create, post ile alınan istekler ise store fonksiyonuna gidecek -->
+        <form action="{{route('book.store')}}" method="POST"> <!-- get ile alınan istekler create, post ile alınan istekler ise store fonksiyonuna gidecek -->
             @csrf <!--csrf form güvenliği için-->
             <div class="mb-3">
                 <label class="form-label">Kitap Adı</label>

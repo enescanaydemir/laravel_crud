@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\LibraryController;
+use App\Http\Controllers\BooksController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -15,8 +15,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [LibraryController::class,'index']);
+Route::get('/', [BooksController::class,'index']);
 
-Route::resource('library', LibraryController::class);
+Route::resource('book', BooksController::class);
 
 Route::get('/users', [UserController::class,'user']);

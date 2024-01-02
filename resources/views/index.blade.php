@@ -2,7 +2,7 @@
 @section('content')
 <br>
     @can('create', App\Models\Book::class)
-        <a href="{{route('library.create')}}" type='button' class="btn btn-success">Kitap Ekle</a>
+        <a href="{{route('book.create')}}" type='button' class="btn btn-success">Kitap Ekle</a>
     @endcan
         <table class="table">
             <thead>
@@ -16,21 +16,21 @@
             </tr>
             </thead>
             <tbody>
-                @if ($libraries)
-                    @foreach ($libraries as $book)
+                @if ($book)
+                    @foreach ($book as $book)
                         <tr>
                             <th scope="row">{{$book->id}}</th>
                             <td>{{$book->books_name}}</td>
                             <td>{{$book->author}}</td>
                             <td>{{$book->title}}</td>
-                            <td><a href="{{ route('library.show', $book->id) }}" type="button" class="btn btn-info">Detayları Göster</td>
+                            <td><a href="{{ route('book.show', $book->id) }}" type="button" class="btn btn-info">Detayları Göster</td>
                             <td>
                                 @can('update', $book)
-                                    <a href="{{ route('library.edit', $book->id) }}" type="button" class="btn btn-warning">Güncelle</td>
+                                    <a href="{{ route('book.edit', $book->id) }}" type="button" class="btn btn-warning">Güncelle</td>
                                 @endcan
                             <td>
                                 @can('delete', $book)
-                                    <form action="{{route('library.destroy', $book->id)}}" method="POST">
+                                    <form action="{{route('book.destroy', $book->id)}}" method="POST">
                                         @csrf
                                         @method("DELETE")
                                         <button type="submit" class="btn btn-danger">Kitap Sil</button>

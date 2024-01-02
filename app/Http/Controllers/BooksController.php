@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Library;
+use App\Models\Books;
 use Illuminate\Http\Request;
 
-class LibraryController extends Controller
+class BooksController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index() //index tüm ürünlerin çekileceği fonksiyon
     {
-        $libraries = Library::all();
-        return view('index', compact('libraries'));
+        $book = Books::all();
+        return view('index', compact('book'));
     }
 
     /**
@@ -29,8 +29,8 @@ class LibraryController extends Controller
      */
     public function store(Request $request)
     {
-        Library::create($request->all());
-        return redirect('library');
+        Books::create($request->all());
+        return redirect('book');
     }
 
     /**
@@ -38,7 +38,7 @@ class LibraryController extends Controller
      */
     public function show(string $id)
     {
-        $book = Library::FindOrFail($id);
+        $book = Books::FindOrFail($id);
         return view('show', compact('book'));
     }
 
@@ -47,7 +47,7 @@ class LibraryController extends Controller
      */
     public function edit(string $id)
     {
-        $book=Library::FindOrFail($id); //library tablosuna git ve bir tane kitap bul
+        $book=Books::FindOrFail($id); //Books tablosuna git ve bir tane kitap bul
         return view('update', compact('book'));
     }
 
@@ -56,9 +56,9 @@ class LibraryController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $book=Library::FindOrFail($id);
+        $book=Books::FindOrFail($id);
         $book->update($request->all()); //gelen requestin tüm değerlerini update ediyoruz.
-        return redirect('library');
+        return redirect('book');
     }
 
     /**
@@ -66,8 +66,8 @@ class LibraryController extends Controller
      */
     public function destroy(string $id)
     {
-        $book=Library::FindOrFail($id);
+        $book=Books::FindOrFail($id);
         $book->delete();
-        return redirect('library');
+        return redirect('book');
     }
 }
