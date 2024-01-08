@@ -2,6 +2,7 @@
 
 namespace App\Policies;
 
+use App\Models\Books;
 use App\Models\User;
 
 class UserPolicy
@@ -9,15 +10,15 @@ class UserPolicy
     /**
      * Create a new policy instance.
      */
-    public function create(User $user){
-        return $user->isAdmin();
+    public function create(){
+        return true;
     }
 
-    public function update(User $user){
-        return $user->isAdmin();
+    public function update(User $user, Books $book){
+        return $user->name === $book->author;
     }
 
-    public function delete(User $user){
-        return $user->isAdmin();
+    public function delete(User $user, Books $book){
+        return $user === $book->author;
     }
 }
