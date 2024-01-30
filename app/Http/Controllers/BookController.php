@@ -21,7 +21,7 @@ class BookController extends Controller
      */
     public function create()
     {
-        //
+        return view('create');
     }
 
     /**
@@ -29,7 +29,8 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Book::create($request->all());
+        return redirect('book');
     }
 
     /**
@@ -37,7 +38,8 @@ class BookController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $books = Book::FindOrFail($id);
+        return view('show', compact('books'));
     }
 
     /**
@@ -45,7 +47,8 @@ class BookController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $books = Book::FindOrFail($id);
+        return view('update', compact('books'));
     }
 
     /**
@@ -53,7 +56,9 @@ class BookController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $books = Book::FindOrFail($id);
+        $books->update($request->all());
+        return redirect('book');
     }
 
     /**
@@ -61,6 +66,8 @@ class BookController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $books=Book::FindOrFail($id);
+        $books->delete();
+        return redirect('book');
     }
 }

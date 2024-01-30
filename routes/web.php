@@ -15,4 +15,4 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [BookController::class, 'index']);
-Route::resource('product', BookController::class);
+Route::resource('book', BookController::class);
